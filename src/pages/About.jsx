@@ -29,7 +29,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <img
-              src="/images/rug2.jpg"
+              src="/public/image7.jpg"
               alt=""
               className="w-full h-full object-cover rounded-2xl"
             />
@@ -42,7 +42,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <img
-              src="/images/rug3.jpg"
+              src="/public/image6.jpg"
               alt=""
               className="w-full h-full object-cover rounded-2xl"
             />
