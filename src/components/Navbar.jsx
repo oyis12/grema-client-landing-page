@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Sling as Hamburger } from "hamburger-react";
 
 const navLinks = [
   { name: "Home", id: "home" },
@@ -21,9 +21,12 @@ const Navbar = () => {
   return (
     <>
       {/* NAVBAR */}
-      <nav className="w-full bg-white shadow-md sticky top-0 z-50">
+      <nav
+        className={`
+          w-full sticky top-0 z-50 bg-white duration-300
+        `}
+      >
         <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
-          
           {/* LOGO */}
           <h1 className="text-xl font-bold">MyBrand</h1>
 
@@ -33,20 +36,17 @@ const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => handleClick(link.id)}
-                className="text-gray-700 hover:text-black transition"
+                className="text-gray-700 hover:text-black transition cursor-pointer"
               >
                 {link.name}
               </button>
             ))}
           </div>
 
-          {/* MOBILE MENU BUTTON */}
-          <button
-            onClick={() => setOpen(true)}
-            className="md:hidden"
-          >
-            <Menu size={24} />
-          </button>
+          {/* MOBILE HAMBURGER */}
+          <div className="md:hidden">
+            <Hamburger toggled={open} toggle={setOpen} size={24} />
+          </div>
         </div>
       </nav>
 
@@ -71,16 +71,8 @@ const Navbar = () => {
               exit={{ x: "-100%" }}
               transition={{ type: "tween", duration: 0.3 }}
             >
-              {/* CLOSE BUTTON */}
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="font-bold text-lg">Menu</h2>
-                <button onClick={() => setOpen(false)}>
-                  <X size={24} />
-                </button>
-              </div>
-
               {/* LINKS */}
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-6 mt-6">
                 {navLinks.map((link) => (
                   <button
                     key={link.id}

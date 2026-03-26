@@ -37,7 +37,7 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full bg-[url('/splash_bg.jpg')] bg-cover bg-center py-6 sm:py-8 md:py-10">
+    <div className="w-full bg-[url('/splash_bg.jpg')] bg-cover bg-center py-6 sm:py-8 md:py-10 h-3/4">
       
       {/* MAIN IMAGE */}
       <div className="relative overflow-hidden rounded-lg w-[95%] sm:w-[90%] md:w-4/5 mx-auto">
@@ -85,7 +85,7 @@ const Home = () => {
 
       {/* THUMBNAILS */}
       <div className="mt-4 px-2 sm:px-0">
-        <div className="flex gap-2 sm:gap-3 justify-start sm:justify-center overflow-x-auto scrollbar-hide">
+        <div className="flex gap-2 sm:gap-3 justify-start sm:justify-center">
           {images.map((img, i) => (
             <div
               key={i}

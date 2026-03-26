@@ -16,7 +16,7 @@ const About = () => {
   return (
     <section className="w-full bg-[#f5f5f3] py-12 md:py-20 px-4 sm:px-6 md:px-12">
       <div className="mb-10">
-        <h1 className="text-lg sm:text-3xl md:text-4xl font-semibold text-gray-800">
+        <h1 className="text-lg sm:text-3xl md:text-2xl font-semibold text-gray-800">
           About
         </h1>
 
