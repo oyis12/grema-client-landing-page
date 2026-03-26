@@ -4,13 +4,25 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
   {
-    src: "/images/slide1.jpg",
-    title: "STYLE, COMFORT, QUALITY,",
-    subtitle: "SELECTION!",
+    src: "/image4.jpg",
+    title: "STYLE. COMFORT. QUALITY.",
+    subtitle: "Redefine Your Living Space",
   },
-  { src: "/images/slide2.jpg" },
-  { src: "/images/slide3.jpg" },
-  { src: "/images/slide4.jpg" },
+  {
+    src: "/image1.jpg",
+    title: "TIMELESS ELEGANCE",
+    subtitle: "Where Tradition Meets Modern Design",
+  },
+  {
+    src: "/image2.jpg",
+    title: "UNMATCHED COMFORT",
+    subtitle: "Feel the Difference Under Every Step",
+  },
+  {
+    src: "/image3.jpg",
+    title: "MAKE A STATEMENT",
+    subtitle: "Rugs That Speak Luxury",
+  },
 ];
 
 const Home = () => {
