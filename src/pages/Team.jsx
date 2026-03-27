@@ -89,7 +89,7 @@ const Team = () => {
         </div>
 
         {/* GRID */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mt-16">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mt-16 border-b pb-4">
           {team.map((member, index) => (
             <motion.div
               key={index}
