@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Services from "./pages/Services";
 import Products from "./pages/Products";
 import Team from "./pages/Team";
+import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -29,6 +31,11 @@ function App() {
       <section id="team">
         <Team />
       </section>
+      <section id="contact">
+        <Contact />
+      </section>
+
+      <Footer />
     </div>
   );
 }
