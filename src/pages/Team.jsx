@@ -2,28 +2,28 @@ import { motion } from "framer-motion";
 
 const team = [
   {
-    name: "Fatima Bello",
+    name: "Abdullahi Grema",
     role: "Operations Manager",
-    bio: "Oversees daily operations ensuring smooth service delivery.",
+    bio: "Oversees daily operations, ensuring efficient service delivery and smooth coordination across all departments.",
     image: "/user1.jpeg",
   },
   {
-    name: "Ibrahim Musa",
-    role: "Head of Sales",
-    bio: "Leads sales strategy and customer acquisition.",
-    image: "https://randomuser.me/api/portraits/men/46.jpg",
+    name: "Yusuf Grema",
+    role: "Head of Customer Relations",
+    bio: "Builds strong client relationships, ensuring customer satisfaction and handling inquiries and support.",
+    image: "/user4.jpeg",
   },
   {
-    name: "Zainab Aliyu",
-    role: "Customer Relations",
-    bio: "Ensures top-tier customer satisfaction and support.",
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
+    name: "Musa Grema",
+    role: "Head of Logistics",
+    bio: "Manages delivery, inventory, and installation scheduling to ensure timely and efficient service.",
+    image: "/user3.jpeg",
   },
   {
-    name: "Usman Garba",
-    role: "Installation Supervisor",
-    bio: "Manages carpet installation with precision.",
-    image: "https://randomuser.me/api/portraits/men/52.jpg",
+    name: "Mohammed Grema",
+    role: "Marketing Manager",
+    bio: "Develops marketing strategies to promote products, attract customers, and grow brand presence.",
+    image: "/user2.jpeg",
   },
 ];
 
