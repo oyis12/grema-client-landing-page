@@ -10,7 +10,7 @@ const team = [
   {
     name: "Fatima Bello",
     role: "Operations Manager",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    image: "/user1.jpeg",
   },
   {
     name: "Ibrahim Musa",
@@ -35,21 +35,27 @@ const Team = () => {
       className="min-h-screen flex items-center bg-[#f8f6f4] py-16"
       id="team"
     >
-      <div className="max-w-6xl mx-auto px-6 text-center w-full">
+      <div className="max-w-6xl mx-auto px-6  w-full">
 
         {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-3xl md:text-4xl font-semibold text-black"
-        >
-          Meet Our Team
-        </motion.h2>
+    
+           <div className="mb-10 text-center md:text-left">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800">
+            Meet Our Team
+          </h1>
 
-        <p className="text-black/80 mt-3 max-w-xl mx-auto">
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "3rem" }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="h-[3px] bg-black mt-2 mx-auto md:mx-0"
+          />
+          <p className="text-black/80 mt-3 max-w-xl">
           Our leadership and dedicated professionals ensure quality,
           elegance, and excellence in every carpet we deliver.
         </p>
+        </div>
 
         {/* ================= MAIN LAYOUT ================= */}
         <div className="grid md:grid-cols-3 gap-10 items-center">
