@@ -41,7 +41,9 @@ const Contact = () => {
 
   return (
     <section className="w-full bg-white py-12 md:py-16 px-4 sm:px-6 md:px-12">
-      {/* TITLE */}
+        <div className="max-w-6xl mx-auto">
+        {/* TITLE */}
+
       <div className="mb-10 text-center md:text-left">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800">
           Contact
@@ -143,6 +145,7 @@ const Contact = () => {
           {success && <p className="text-green-600 text-sm">{success}</p>}
         </motion.form>
       </div>
+        </div>
     </section>
   );
 };

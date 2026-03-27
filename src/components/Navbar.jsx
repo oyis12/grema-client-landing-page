@@ -13,24 +13,54 @@ const navLinks = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("home");
 
   const handleClick = (id) => {
     setOpen(false);
+    setActive(id);
     const el = document.getElementById(id);
     el?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Scroll spy (detect active section)
+  useEffect(() => {
+    const handleScroll = () => {
+      let current = "home";
+
+      navLinks.forEach((link) => {
+        const section = document.getElementById(link.id);
+        if (section) {
+          const top = section.offsetTop - 100;
+          if (window.scrollY >= top) {
+            current = link.id;
+          }
+        }
+      });
+
+      setActive(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       {/* NAVBAR */}
-      <nav
-        className={`
-          w-full sticky top-0 z-50 bg-white duration-300
-        `}
-      >
+      <nav className="w-full sticky top-0 z-50 bg-white shadow-sm">
         <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
+          
           {/* LOGO */}
-          <h1 className="text-xl font-bold">MyBrand</h1>
+          <div
+            onClick={() => handleClick("home")}
+            className="flex items-center gap-2 cursor-pointer"
+          >
+            <img
+              src="/grema_logo.jpeg"
+              alt="Logo"
+              className="h-12 w-12 object-cover rounded-full"
+            />
+          </div>
 
           {/* DESKTOP MENU */}
           <div className="hidden md:flex gap-8">
@@ -38,16 +68,27 @@ const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => handleClick(link.id)}
-                className="text-gray-700 hover:text-black transition cursor-pointer"
+                className={`relative text-sm font-medium transition ${
+                  active === link.id
+                    ? "text-black"
+                    : "text-gray-600 hover:text-black"
+                }`}
               >
                 {link.name}
+
+                {/* ACTIVE UNDERLINE */}
+                <span
+                  className={`absolute left-0 -bottom-1 h-[2px] bg-black transition-all duration-300 ${
+                    active === link.id ? "w-full" : "w-0"
+                  }`}
+                />
               </button>
             ))}
           </div>
 
           {/* MOBILE HAMBURGER */}
           <div className="md:hidden">
-            <Hamburger toggled={open} toggle={setOpen} size={24} />
+            <Hamburger toggled={open} toggle={setOpen} size={22} duration={1.5}/>
           </div>
         </div>
       </nav>
@@ -71,7 +112,7 @@ const Navbar = () => {
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
+              transition={{ duration: 0.3 }}
             >
               {/* LINKS */}
               <div className="flex flex-col gap-6 mt-6">
@@ -79,7 +120,11 @@ const Navbar = () => {
                   <button
                     key={link.id}
                     onClick={() => handleClick(link.id)}
-                    className="text-left text-gray-700 text-lg hover:text-black transition"
+                    className={`text-left text-lg font-medium transition ${
+                      active === link.id
+                        ? "text-black"
+                        : "text-gray-600 hover:text-black"
+                    }`}
                   >
                     {link.name}
                   </button>
