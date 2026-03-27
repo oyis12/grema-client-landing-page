@@ -41,8 +41,9 @@ const Contact = () => {
 
   return (
     <section className="w-full bg-white py-12 md:py-16 px-4 sm:px-6 md:px-12">
-        <div className="mb-10">
-        <h1 className="text-lg sm:text-3xl md:text-2xl font-semibold text-gray-800">
+      {/* TITLE */}
+      <div className="mb-10 text-center md:text-left">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800">
           Contact
         </h1>
 
@@ -50,11 +51,10 @@ const Contact = () => {
           initial={{ width: 0 }}
           whileInView={{ width: "3rem" }}
           transition={{ duration: 0.5 }}
-          className="h-[3px] bg-black  mt-2"
+          className="h-[3px] bg-black mt-2 mx-auto md:mx-0"
         />
       </div>
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
-        
         {/* LEFT - INFO */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -73,13 +73,21 @@ const Contact = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3 text-gray-700">
               <MapPin size={20} />
-              <span> Plot 1698, Aminu Kanu Crescent,<br />
-            Wuse II, Abuja, Nigeria.</span>
+              <span>
+                {" "}
+                Plot 1698, Aminu Kanu Crescent,
+                <br />
+                Wuse II, Abuja, Nigeria.
+              </span>
             </div>
 
             <div className="flex items-center gap-3 text-gray-700">
               <Phone size={20} />
-              <span>08184343338<br /> 08130262533<br /> 08033212840</span>
+              <span>
+                08184343338
+                <br /> 08130262533
+                <br /> 08033212840
+              </span>
             </div>
 
             <div className="flex items-center gap-3 text-gray-700">
@@ -132,9 +140,7 @@ const Contact = () => {
             {loading ? "Sending..." : "Send Message"}
           </button>
 
-          {success && (
-            <p className="text-green-600 text-sm">{success}</p>
-          )}
+          {success && <p className="text-green-600 text-sm">{success}</p>}
         </motion.form>
       </div>
     </section>
