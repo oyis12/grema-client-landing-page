@@ -3,3 +3,38 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* navigation button settings */
+/* Move arrows to extreme sides */
+.mySwiper .swiper-button-prev {
+  left: 1px !important;
+}
+
+.mySwiper .swiper-button-next {
+  right: 1px !important;
+}
+
+/* Make them vertically centered */
+.mySwiper .swiper-button-prev,
+.mySwiper .swiper-button-next {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Style (premium look) */
+.mySwiper .swiper-button-prev,
+.mySwiper .swiper-button-next {
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+}
+
+/* Arrow icon size */
+.mySwiper .swiper-button-prev::after,
+.mySwiper .swiper-button-next::after {
+  font-size: 18px;
+  font-weight: bold;
+}
