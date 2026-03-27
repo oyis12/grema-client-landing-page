@@ -1,10 +1,10 @@
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const team = [
   {
     name: "Fatima Bello",
     role: "Operations Manager",
+    bio: "Oversees daily operations ensuring smooth service delivery.",
     image: "/user1.jpeg",
   },
   {
@@ -28,69 +28,34 @@ const team = [
 ];
 
 const TeamCard = ({ member }) => {
-  const ref = useRef(null);
-
-  // 🧲 Magnetic effect
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const rotateX = useTransform(y, [-50, 50], [8, -8]);
-  const rotateY = useTransform(x, [-50, 50], [-8, 8]);
-
-  const handleMouseMove = (e) => {
-    const rect = ref.current.getBoundingClientRect();
-    x.set((e.clientX - rect.left - rect.width / 2) / 6);
-    y.set((e.clientY - rect.top - rect.height / 2) / 6);
-  };
-
-  const handleLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   return (
     <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleLeave}
-      style={{ rotateX, rotateY }}
-      whileHover={{ scale: 1.05 }}
-      className="relative group rounded-2xl overflow-hidden cursor-pointer"
+      whileHover={{ y: -5 }}
+      className="text-center"
     >
       {/* IMAGE */}
-      <motion.img
-        src={member.image}
-        alt={member.name}
-        className="w-full h-80 object-cover"
-        whileHover={{ scale: 1.1 }}
-        transition={{ duration: 0.6 }}
-      />
-
-      {/* ✨ GLOW EFFECT */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/10 opacity-0 group-hover:opacity-100 transition duration-300" />
-
-      {/* 🌫️ GLASS OVERLAY */}
-      <div className="absolute inset-0 backdrop-blur-lg bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center p-6 text-center">
-
-        <motion.h3
-          initial={{ opacity: 0, y: 10 }}
-          whileHover={{ opacity: 1, y: 0 }}
-          className="text-white text-lg font-semibold"
-        >
-          {member.name}
-        </motion.h3>
-
-        <p className="text-white/80 text-sm mt-1">
-          {member.role}
-        </p>
-
-        <p className="text-white/70 text-xs mt-3">
-          {member.bio}
-        </p>
+      <div className="overflow-hidden rounded-2xl shadow-md">
+        <motion.img
+          src={member.image}
+          alt={member.name}
+          className="w-full h-72 object-cover"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.4 }}
+        />
       </div>
 
-      {/* 🎯 SPOTLIGHT */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15),transparent_60%)]" />
+      {/* INFO */}
+      <h3 className="mt-4 font-semibold text-gray-800">
+        {member.name}
+      </h3>
+
+      <p className="text-sm text-gray-500">
+        {member.role}
+      </p>
+
+      <p className="text-xs text-gray-400 mt-2 max-w-[200px] mx-auto">
+        {member.bio}
+      </p>
     </motion.div>
   );
 };
@@ -101,11 +66,10 @@ const Team = () => {
       className="min-h-screen flex items-center bg-[#f8f6f4] py-16"
       id="team"
     >
-      <div className="max-w-6xl mx-auto px-6  w-full">
+      <div className="max-w-6xl mx-auto px-6 w-full">
 
         {/* Heading */}
-    
-           <div className="mb-10 text-center md:text-left">
+        <div className="mb-10 text-center md:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800">
             Meet Our Team
           </h1>
@@ -117,10 +81,11 @@ const Team = () => {
             viewport={{ once: true }}
             className="h-[3px] bg-black mt-2 mx-auto md:mx-0"
           />
+
           <p className="text-black/80 mt-3 max-w-xl">
-          Our leadership and dedicated professionals ensure quality,
-          elegance, and excellence in every carpet we deliver.
-        </p>
+            Our leadership and dedicated professionals ensure quality,
+            elegance, and excellence in every carpet we deliver.
+          </p>
         </div>
 
         {/* GRID */}
@@ -128,7 +93,7 @@ const Team = () => {
           {team.map((member, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
