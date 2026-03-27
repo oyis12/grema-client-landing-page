@@ -1,40 +1,104 @@
-import { motion } from "framer-motion";
-
-const ceo = {
-  name: "Ahmad Abdullahi",
-  role: "CEO & Founder",
-  image: "https://randomuser.me/api/portraits/men/32.jpg",
-};
+import { motion, useMotionValue, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const team = [
   {
     name: "Fatima Bello",
     role: "Operations Manager",
+    bio: "Oversees daily operations ensuring smooth service delivery.",
     image: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
     name: "Ibrahim Musa",
     role: "Head of Sales",
+    bio: "Leads sales strategy and customer acquisition.",
     image: "https://randomuser.me/api/portraits/men/46.jpg",
   },
   {
     name: "Zainab Aliyu",
     role: "Customer Relations",
+    bio: "Ensures top-tier customer satisfaction and support.",
     image: "https://randomuser.me/api/portraits/women/68.jpg",
   },
   {
     name: "Usman Garba",
     role: "Installation Supervisor",
+    bio: "Manages carpet installation with precision.",
     image: "https://randomuser.me/api/portraits/men/52.jpg",
   },
 ];
 
+const TeamCard = ({ member }) => {
+  const ref = useRef(null);
+
+  // 🧲 Magnetic effect
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useTransform(y, [-50, 50], [8, -8]);
+  const rotateY = useTransform(x, [-50, 50], [-8, 8]);
+
+  const handleMouseMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    x.set((e.clientX - rect.left - rect.width / 2) / 6);
+    y.set((e.clientY - rect.top - rect.height / 2) / 6);
+  };
+
+  const handleLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleLeave}
+      style={{ rotateX, rotateY }}
+      whileHover={{ scale: 1.05 }}
+      className="relative group rounded-2xl overflow-hidden cursor-pointer"
+    >
+      {/* IMAGE */}
+      <motion.img
+        src={member.image}
+        alt={member.name}
+        className="w-full h-80 object-cover"
+        whileHover={{ scale: 1.1 }}
+        transition={{ duration: 0.6 }}
+      />
+
+      {/* ✨ GLOW EFFECT */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/10 opacity-0 group-hover:opacity-100 transition duration-300" />
+
+      {/* 🌫️ GLASS OVERLAY */}
+      <div className="absolute inset-0 backdrop-blur-lg bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center p-6 text-center">
+
+        <motion.h3
+          initial={{ opacity: 0, y: 10 }}
+          whileHover={{ opacity: 1, y: 0 }}
+          className="text-white text-lg font-semibold"
+        >
+          {member.name}
+        </motion.h3>
+
+        <p className="text-white/80 text-sm mt-1">
+          {member.role}
+        </p>
+
+        <p className="text-white/70 text-xs mt-3">
+          {member.bio}
+        </p>
+      </div>
+
+      {/* 🎯 SPOTLIGHT */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15),transparent_60%)]" />
+    </motion.div>
+  );
+};
+
 const Team = () => {
   return (
-    <section
-      className="min-h-screen flex items-center bg-[#f8f6f4] py-16"
-      id="team"
-    >
+    <section className="min-h-screen flex items-center bg-[#f8f6f4] py-20" id="team">
       <div className="max-w-6xl mx-auto px-6 text-center w-full">
 
         {/* Heading */}
@@ -46,80 +110,22 @@ const Team = () => {
           Meet Our Team
         </motion.h2>
 
-        <p className="text-black/80 mt-3 max-w-xl mx-auto">
-          Our leadership and dedicated professionals ensure quality,
-          elegance, and excellence in every carpet we deliver.
+        <p className="text-black/70 mt-3 max-w-xl mx-auto">
+          Our dedicated professionals deliver excellence and elegance in every detail.
         </p>
 
-        {/* ================= MAIN LAYOUT ================= */}
-        <div className="grid md:grid-cols-3 gap-10 items-center">
-
-          {/* LEFT SIDE (2 members) */}
-          <div className="flex flex-col gap-8">
-            {team.slice(0, 2).map((member, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -6 }}
-                className="text-center"
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-28 h-28 mx-auto rounded-full object-cover shadow-lg"
-                />
-                <h4 className="mt-3 font-semibold text-black">
-                  {member.name}
-                </h4>
-                <p className="text-sm text-black/70">
-                  {member.role}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* CEO CENTER */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="flex flex-col items-center"
-          >
-            <motion.img
-              src={ceo.image}
-              alt={ceo.name}
-              className="w-48 h-48 rounded-full object-cover shadow-2xl border-4 border-black"
-              whileHover={{ scale: 1.05 }}
-            />
-
-            <h3 className="mt-5 text-xl font-semibold text-black">
-              {ceo.name}
-            </h3>
-
-            <p className="text-black/80">{ceo.role}</p>
-          </motion.div>
-
-          {/* RIGHT SIDE (2 members) */}
-          <div className="flex flex-col gap-8">
-            {team.slice(2, 4).map((member, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -6 }}
-                className="text-center"
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-28 h-28 mx-auto rounded-full object-cover shadow-lg"
-                />
-                <h4 className="mt-3 font-semibold text-black">
-                  {member.name}
-                </h4>
-                <p className="text-sm text-black/70">
-                  {member.role}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
+        {/* GRID */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mt-16">
+          {team.map((member, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <TeamCard member={member} />
+            </motion.div>
+          ))}
         </div>
 
       </div>
