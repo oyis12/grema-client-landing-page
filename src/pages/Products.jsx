@@ -149,7 +149,7 @@ const ProductCard = ({ item, isActive }) => {
                 opacity: isActive ? 1 : 0.6,
             }}
             transition={{ duration: 0.4 }}
-            className="rounded-2xl overflow-hidden shadow-xl bg-white"
+            className="overflow-hidden shadow-xl bg-white"
         >
             {/* Image */}
             <div className="h-64 overflow-hidden">
@@ -205,7 +205,7 @@ export default function ProductsSlider() {
                           slidesPerView: 3,
                         },
                       }}
-                    className="mt-16 mySwiper px-4 md:px-0"
+                    className="mt-16 mySwiper"
                 >
                     {products.map((item, index) => (
                         <SwiperSlide key={index}>
