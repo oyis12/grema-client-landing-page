@@ -5,7 +5,7 @@ const team = [
     name: "Abdullahi Grema",
     role: "Operations Manager",
     bio: "Oversees daily operations, ensuring efficient service delivery and smooth coordination across all departments.",
-    image: "/user1.jpeg",
+    image: "/user1.jpg",
   },
   {
     name: "Yusuf Grema",
