@@ -111,11 +111,11 @@ const About = () => {
             </p>
 
             {/* CTA */}
-            <div className="mt-8">
+            {/* <div className="mt-8">
               <button className="px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition">
                 Explore Collection
               </button>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>
