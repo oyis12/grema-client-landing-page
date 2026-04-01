@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sling as Hamburger } from "hamburger-react";
+import logo from "../assets/grema_logo.jpeg"
 
 const navLinks = [
   { name: "Home", id: "home" },
@@ -56,7 +57,7 @@ const Navbar = () => {
             className="flex items-center gap-2 cursor-pointer"
           >
             <img
-              src="/grema_logo.jpeg"
+              src={logo}
               alt="Logo"
               className="h-12 w-12 object-cover rounded-full"
             />
