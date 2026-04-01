@@ -96,7 +96,7 @@ const Home = () => {
 
       {/* THUMBNAILS */}
       <div className="mt-4 px-2 sm:px-0">
-        <div className="flex gap-2 sm:gap-3 justify-start sm:justify-center overflow-x-auto">
+        <div className="flex gap-2 sm:gap-3 justify-start sm:justify-center">
           {images.map((img, i) => (
             <div
               key={i}
