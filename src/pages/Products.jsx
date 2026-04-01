@@ -85,7 +85,7 @@ const VideoBackground = () => {
 
 // ================= PRODUCT CARD =================
 const ProductCard = ({ item, isActive }) => {
-  const ref = useRef(null);
+    const ref = useRef(null);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -126,11 +126,11 @@ const ProductCard = ({ item, isActive }) => {
         />
       </div>
 
-      <div className="p-4 text-gray-800">
-        <h3 className="font-semibold">{item.title}</h3>
-      </div>
-    </motion.div>
-  );
+            <div className="p-4 text-gray-800">
+                <h3 className="font-semibold">{item.title}</h3>
+            </div>
+        </motion.div>
+    );
 };
 
 // ================= MAIN COMPONENT =================

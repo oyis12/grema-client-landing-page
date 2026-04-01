@@ -89,7 +89,7 @@ const Footer = () => {
       {/* BOTTOM */}
       <div className="border-t border-white/10 mt-8 pt-4 text-center text-gray-500 text-xs">
         © {new Date().getFullYear()} Grey and Grema. All rights reserved.<br/>
-        <span>Powered by - www.mahivon.com</span>
+        <span>Powered by - www.mahvion.com</span>
       </div>
     </footer>
   );
